@@ -1,25 +1,35 @@
 <template>
   <v-container>  
    <!--     <player-input :playerId="openPlayerSlot"></player-input>-->
+    <v-row>
+      <v-col cols=2>
         <v-row>
-            <v-col cols=12 lg=2>
-
- 
-                 <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
-                  <TurnButton/>
-                  <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
-  
-             
-            </v-col>
-            <v-col cols=12 lg=8>
-              <Board/>
-            </v-col>
-            <v-col cols=12 lg=2>
-              <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
-              <GladiatorShop v-bind:gladiators="shopGladiators"/>
-            </v-col>
+          <v-col cols=12 sm=12 xs=12>
+            <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
+          </v-col>
+          <v-col cols=12 sm=12 xs=12>
+            <TurnButton/>
+          </v-col>
+          <v-col cols=12 sm=12 xs=12>
+            <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
+          </v-col>
         </v-row>
-    </v-container>
+      </v-col>
+      <v-col cols=8>
+        <Board/>
+      </v-col>
+      <v-col cols=2>
+        <v-row>
+          <v-col cols=12 sm=6 xs=6>
+            <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
+          </v-col>
+          <v-col cols=12 sm=6 xs=6>
+            <GladiatorShop v-bind:gladiator="hoveredGladiator"/>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
