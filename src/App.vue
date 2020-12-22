@@ -1,15 +1,37 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Game</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <transition name="swipe" mode="out-in">
-      <router-view/>
-    </transition>
+  <div id = "app">
+    <v-toolbar >
+      <v-app-bar-nav-icon  @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <v-toolbar-title>Gladiators</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn text to="/">Game</v-btn>
+        <v-btn text to="/About">Rules</v-btn>
+      </v-toolbar-items>
+    </v-toolbar>
+    
+    <v-navigation-drawer
+        v-model="drawer"
+        temporary
+        absolute
+        width = "200"
+        id = "drawer">
+        <v-btn text to="/">Link One</v-btn>
+        <v-btn text to="/About">Link Two</v-btn>
 
+    </v-navigation-drawer>
+    <router-view/>
   </div>
 </template>
+
+<script>
+  export default {
+    data: function() {
+      return {
+        drawer: null }
+    },
+  }
+</script>
 
 <style lang="scss">
 #app {
@@ -20,18 +42,6 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 .swipe-enter-active,
     .swipe-leave-active {
         transition: opacity 0.7s, transform 0.7s;

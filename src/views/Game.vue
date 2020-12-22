@@ -1,26 +1,25 @@
 <template>
-  <div class="v-container">
-        
-   <!--     <player-input :playerId="openPlayerSlot"></player-input>
-        -->
-        <div class="v-row row">
+  <v-container>  
+   <!--     <player-input :playerId="openPlayerSlot"></player-input>-->
+        <v-row>
+            <v-col cols=12 lg=2>
 
-            <div class="v-col-xs-12 v-col-sm-12 v-col-lg-2">
-              <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
-              <TurnButton/>
-              <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
-            </div>
-
-            <div class="v-col v-col-xs-12 v-col-sm-12 v-col-lg-8">
+ 
+                 <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
+                  <TurnButton/>
+                  <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
+  
+             
+            </v-col>
+            <v-col cols=12 lg=8>
               <Board/>
-            </div>
-
-            <div class="v-col v-col-xs-12 v-col-sm-12 v-col-lg-2">
+            </v-col>
+            <v-col cols=12 lg=2>
               <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
               <GladiatorShop v-bind:gladiators="shopGladiators"/>
-            </div>
-        </div>
-    </div>
+            </v-col>
+        </v-row>
+    </v-container>
 </template>
 
 <script>
@@ -43,11 +42,20 @@ export default {
     this.$store.dispatch("getJson");
   },
   computed: {
+    player1() {
+      return this.$store.state.controller.playerOne
+    },
+    player2() {
+      return this.$store.state.controller.playerTwo
+    },
     hoveredGladiator() {
       return this.$store.state.myHoveredGladiator
     },
     shopGladiators() {
       return this.$store.getters.shopGladiators
+    },
+    turnPlayer() {
+      return this.$store.state.controller.currentPlayer ? this.$store.state.controller.currentPlayer.id : null;
     }
   }
 }

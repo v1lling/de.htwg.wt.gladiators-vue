@@ -1,5 +1,5 @@
 <template>
-    <div class="board-tiles">
+    <div class="board">
         <template v-for="(tileRow, y) in boardTiles">
             <BoardTile v-for="(tile, x) in tileRow" v-bind:key="x+'-'+y" v-bind:tileType="tile.tileType"
                 v-bind:playerId="tile.tileType==='Base' ? (y==0 ? 1 : 2) : null"
@@ -49,7 +49,7 @@
 </script>
 
 <style scoped lang="scss">
-    .board-tiles {
+    .board {
         min-height: 70vh;
         border: 2px solid black;
         position: relative;
