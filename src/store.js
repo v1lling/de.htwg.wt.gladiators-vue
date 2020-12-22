@@ -19,7 +19,7 @@ const store = new Vuex.Store({
   state: initialState,
   actions: {
     getJson({commit}) {
-      $.ajax({ method: "GET", url: "/json", dataType: "json", contentType: "application/json",
+      $.ajax({ method: "GET", url: "http://localhost:9000/json", dataType: "json", contentType: "application/json",
         success: function (response) {
            commit('SET_CONTROLLER', response[0])
         },
@@ -91,7 +91,16 @@ const store = new Vuex.Store({
       state.myHighlightedTiles = highlightesTiles
     }
   },
-  mounted() {
+  getters: {
+    boardTiles: state => {
+      return state.controller.board ? state.controller.board.tiles : [];
+    },
+    selectedGladiator: state => {
+      return state.mySelectedGladiator
+    },
+    shopGladiators: state => {
+      return state.controller.shop ? state.controller.shop.stock : []
+    }
   }
 });
 

@@ -1,10 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Game</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <transition name="swipe" mode="out-in">
+      <router-view/>
+    </transition>
+
   </div>
 </template>
 
@@ -29,4 +32,14 @@
     }
   }
 }
+.swipe-enter-active,
+    .swipe-leave-active {
+        transition: opacity 0.7s, transform 0.7s;
+    }
+
+    .swipe-enter,
+    .swipe-leave-active {
+        opacity: 0;
+        transform: scale(0);
+    }
 </style>

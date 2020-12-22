@@ -1,4 +1,5 @@
-# de.htwg.wt.gladiators-vue
+# Gladiators - The Game
+## Vue Front-End
 
 ## Project setup
 ```
