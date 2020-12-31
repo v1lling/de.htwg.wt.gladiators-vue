@@ -1,6 +1,5 @@
 <template>
   <v-container>  
-   <!--     <player-input :playerId="openPlayerSlot"></player-input>-->
     <v-row>
       <v-col cols=2>
         <v-row>
@@ -19,14 +18,8 @@
         <Board/>
       </v-col>
       <v-col cols=2>
-        <v-row>
-          <v-col cols=12 sm=6 xs=6>
-            <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
-          </v-col>
-          <v-col cols=12 sm=6 xs=6>
-            <GladiatorShop v-bind:gladiator="hoveredGladiator"/>
-          </v-col>
-        </v-row>
+        <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
+        <GladiatorShop v-bind:gladiators="shopGladiators"/>
       </v-col>
     </v-row>
   </v-container>
@@ -38,14 +31,21 @@ import GladiatorInfo from '@/components/interface/gladiator-info.vue';
 import GladiatorShop from '@/components/interface/shop/shop.vue';
 import PlayerInfo from '@/components/interface/player-info.vue';
 import TurnButton from '@/components/interface/turn-button.vue';
+//import PlayerInput from '@/components/interface/player-input.vue';
 
 export default {
   name: 'Game',
+  data: function() {
+    return {
+      dialog: true
+    }
+  },
   components: {
     Board,
     GladiatorInfo,
     GladiatorShop,
     PlayerInfo,
+  //  PlayerInput,
     TurnButton
   },
   mounted() {
@@ -66,7 +66,16 @@ export default {
     },
     turnPlayer() {
       return this.$store.state.controller.currentPlayer ? this.$store.state.controller.currentPlayer.id : null;
-    }
+    },
+    openPlayerSlot() {
+      if (this.$store.state.controller.gameState == "NamingPlayerOne") {
+          return 1;
+      } else if (this.$store.state.controller.gameState == "NamingPlayerTwo") {
+          return 2;
+      } else {    
+          return null;
+      }
+  },
   }
 }
 </script>
