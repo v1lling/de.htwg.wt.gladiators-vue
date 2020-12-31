@@ -70,6 +70,12 @@
 </script>
 
 <style lang="scss">
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
 body {
   background: #2980B9;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
