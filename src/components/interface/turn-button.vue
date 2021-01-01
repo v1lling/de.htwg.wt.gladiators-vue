@@ -50,7 +50,7 @@
         background-position: center;
         background-size: auto;
     //    background-color: #d89755;
-        background-image: url("/assets/images/shield_transparent.png"); 
+        background-image: url("~@/assets/images/shield_transparent.png"); 
         animation: animatedBackground 30s linear infinite;
         &:disabled {
             opacity: 1;

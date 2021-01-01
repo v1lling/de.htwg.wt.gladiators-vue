@@ -52,13 +52,13 @@
         cursor: pointer;
         
         &.gladTank {
-            background-image: url("/assets/images/gladiators/shield.png"); 
+            background-image: url("~@/assets/images/gladiators/shield.png"); 
         }
         &.gladKnight {
-            background-image: url("/assets/images/gladiators/sword.png");
+            background-image: url("~@/assets/images/gladiators/sword.png");
         }
         &.gladArcher {
-            background-image: url("/assets/images/gladiators/bow.png"); 
+            background-image: url("~@/assets/images/gladiators/bow.png"); 
         }
         &.gladPlayer1 {
             filter: invert(29%) sepia(94%) saturate(418%) hue-rotate(142deg) brightness(94%) contrast(88%);

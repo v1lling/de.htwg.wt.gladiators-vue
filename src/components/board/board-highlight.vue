@@ -38,7 +38,7 @@
         cursor: pointer;
         &.tileAttack {
             animation: blinker 2s linear infinite;
-            background-image: url("/assets/images/attack.png"); 
+            background-image: url("~@/assets/images/attack.png"); 
             height: calc(100% / 30);
             width: calc(100% / 30);
             &.tilePlayer1 {

@@ -1,5 +1,5 @@
 <template>
-    <button class="btn btn-outline-dark shop-item" 
+    <v-btn class="shop-item" 
         :class="'glad' + gladiator.gladiatorType"
         @mouseenter="updateHoveredGladiator()"
         @mouseleave="resetHoveredGladiator()"
@@ -8,7 +8,7 @@
             ${{ gladiator && gladiator.cost || "-" }}
         </span>
         <div class="layer"/>
-    </button>
+    </v-btn>
 </template>
 
 <script>
@@ -35,18 +35,19 @@
 
 <style scoped lang="scss">
     .shop-item {
+        width: 100%;
         margin-top: 1rem;
         text-align: end;
         position: relative;
         background-color: #f6c663;
         &.gladKnight .layer{
-            background-image: url("/assets/images/gladiators/sword.png");
+            background-image: url("~@/assets/images/gladiators/sword.png");
         }
         &.gladArcher .layer {
-            background-image: url("/assets/images/gladiators/bow.png"); 
+            background-image: url("~@/assets/images/gladiators/bow.png"); 
         }
         &.gladTank .layer {
-            background-image: url("/assets/images/gladiators/shield.png"); 
+            background-image: url("~@/assets/images/gladiators/shield.png"); 
         }
         &:hover {
             background-color: #8c6413;

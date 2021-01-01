@@ -38,7 +38,7 @@ const store = new Vuex.Store({
       };
       websocket.send(JSON.stringify(oPayload));
     },
-    buyGladiator(coordinates) {
+    buyGladiator(commit, coordinates) {
       let payload = {
         "commandType" : "BuyUnit",
         "number": this.state.mySelectedGladiator.shopIndex,
@@ -46,7 +46,7 @@ const store = new Vuex.Store({
       };
       websocket.send(JSON.stringify(payload));
     },
-    moveGladiator(coordinates) {
+    moveGladiator(commit, coordinates) {
       let oPayload = {
         "commandType" : "Move",
         "from": {
@@ -61,7 +61,7 @@ const store = new Vuex.Store({
       websocket.send(JSON.stringify(oPayload));
     },
     hightlightTiles({commit}, coordinates)  {
-      $.ajax({ method: "POST", url: "/gladiators/api/gladiatorSelect", data: JSON.stringify(coordinates), dataType: "json", contentType: "application/json",
+      $.ajax({ method: "POST", url: "http://localhost:9000/gladiators/api/gladiatorSelect", data: JSON.stringify(coordinates), dataType: "json", contentType: "application/json",
           success: function (response) {
             commit('SET_HIGHLIGHTEDTILES', response[1])
           },

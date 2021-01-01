@@ -9,8 +9,8 @@
         <BoardHighlight mode="Attack" v-for="(highlight, i) in highlightedAttackTiles" v-bind:key="i" :coordinates="highlight"/>
         <BoardHighlight mode="Move" v-for="(highlight, i) in highlightedMoveTiles" v-bind:key="i" :coordinates="highlight"/>
 
-        <Gladiator v-for="glad in gladiatorsPlayerOne" v-bind:key="glad" v-bind:gladiator="glad" playerId="1"/>
-        <Gladiator v-for="glad in gladiatorsPlayerTwo" v-bind:key="glad" v-bind:gladiator="glad" playerId="2"/>
+        <Gladiator v-for="glad in gladiatorsPlayerOne" v-bind:key="glad" v-bind:gladiator="glad" :playerId=1></Gladiator>
+        <Gladiator v-for="glad in gladiatorsPlayerTwo" v-bind:key="glad" v-bind:gladiator="glad" :playerId=2></Gladiator>
     </div>
 </template>       
 
