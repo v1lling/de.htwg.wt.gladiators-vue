@@ -3,24 +3,25 @@
     <PlayerInput v-if="openPlayerSlot && !myPlayerId" :playerId="openPlayerSlot"/>
     <v-row>
       <v-col cols=12 sm=2 xs=2>
-        <v-row>
-          <v-col cols=12 sm=12 xs=12>
-            <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
-          </v-col>
-          <v-col cols=12 sm=12 xs=12>
-            <TurnButton/>
-          </v-col>
-          <v-col cols=12 sm=12 xs=12>
-            <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
-          </v-col>
-        </v-row>
+        <v-card height="100%"
+              class="d-flex flex-column justify-space-between"
+              flat>
+          <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
+          <TurnButton/>
+          <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
+        </v-card>
       </v-col>
       <v-col cols=12 sm=8 xs=8>
         <Board/>
       </v-col>
       <v-col cols=12 sm=2 xs=2>
-        <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
-        <GladiatorShop v-bind:gladiators="shopGladiators"/>
+           <v-card height="100%"
+              class="d-flex flex-column justify-space-between"
+              flat>
+
+              <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
+              <GladiatorShop v-bind:gladiators="shopGladiators"/>
+           </v-card>
       </v-col>
     </v-row>
   </v-container>
