@@ -1,7 +1,7 @@
 <template>
 <v-app>
   <div id = "app">
-    <v-toolbar >
+    <v-toolbar dark>
       <v-img
         src="@/assets/logo.png"
         max-height="40"
@@ -70,7 +70,11 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@font-face {
+  font-family: "Moonflower";
+  src: url("~@/assets/fonts/MoonFlowerBold.ttf");
+}
 html {
   height: 100%;
 }
@@ -91,6 +95,12 @@ body {
 }
 .v-title {
   padding-left: 1rem;
+  font-size: 2.25rem !important;
+  font-family: "Moonflower";
+}
+.v-image {
+    border: 3px solid white;
+    border-radius: 32px;
 }
 .swipe-enter-active,
 .swipe-leave-active {
