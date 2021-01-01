@@ -2,7 +2,7 @@
   <v-container>  
     <PlayerInput v-if="openPlayerSlot && !myPlayerId" :playerId="openPlayerSlot"/>
     <v-row>
-      <v-col cols=2>
+      <v-col cols=12 sm=2 xs=2>
         <v-row>
           <v-col cols=12 sm=12 xs=12>
             <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
@@ -15,10 +15,10 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols=8>
+      <v-col cols=12 sm=8 xs=8>
         <Board/>
       </v-col>
-      <v-col cols=2>
+      <v-col cols=12 sm=2 xs=2>
         <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
         <GladiatorShop v-bind:gladiators="shopGladiators"/>
       </v-col>
