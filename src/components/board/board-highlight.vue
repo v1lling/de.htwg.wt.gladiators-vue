@@ -29,6 +29,7 @@
         50% { opacity: 0.2;}
     }
     .board-highlight {
+        pointer-events: none;
         height: calc(100% / 15);
         width: calc(100% / 15);
         position: absolute;
@@ -50,7 +51,6 @@
         }
         &.tileMove {
             opacity: 0.2;
-            border-radius: 50%;
             background: green;
         }
     }

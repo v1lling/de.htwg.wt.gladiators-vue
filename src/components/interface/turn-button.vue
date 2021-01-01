@@ -45,12 +45,16 @@
 </script>
 
 <style scoped lang="scss">
+    @keyframes animatedBackground {
+        0% { background-position: 0 0;}
+        100% { background-position: 1000% 1000%;}
+    }
     .turnbutton.btn {
-  //      background: #d3b0a8;
+        border: 1px solid black;
         background-position: center;
         background-size: auto;
-    //    background-color: #d89755;
-        background-image: url("~@/assets/images/shield_transparent.png"); 
+        background-image: url("~@/assets/images/shield_transparent.png");
+        background-repeat: unset;
         animation: animatedBackground 30s linear infinite;
         &:disabled {
             opacity: 1;

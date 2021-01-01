@@ -27,6 +27,7 @@
                     this.$store.dispatch("moveGladiator", this.coordinates);
                 } else {
                     this.$store.commit('SET_SELECTEDGLADIATOR', {});
+                    this.$store.commit('SET_HIGHLIGHTEDTILES', {});
                 }
             }
         }
@@ -35,6 +36,7 @@
 
 <style scoped lang="scss">
     .board-tile {
+        border: 1px solid #652f10;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;

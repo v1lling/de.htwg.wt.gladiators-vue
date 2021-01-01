@@ -9,8 +9,8 @@
         <BoardHighlight mode="Attack" v-for="(highlight, i) in highlightedAttackTiles" v-bind:key="i" :coordinates="highlight"/>
         <BoardHighlight mode="Move" v-for="(highlight, i) in highlightedMoveTiles" v-bind:key="i" :coordinates="highlight"/>
 
-        <Gladiator v-for="glad in gladiatorsPlayerOne" v-bind:key="glad" v-bind:gladiator="glad" :playerId=1></Gladiator>
-        <Gladiator v-for="glad in gladiatorsPlayerTwo" v-bind:key="glad" v-bind:gladiator="glad" :playerId=2></Gladiator>
+        <Gladiator v-for="(glad, i) in gladiatorsPlayerOne" v-bind:key="i" v-bind:gladiator="glad" :playerId=1></Gladiator>
+        <Gladiator v-for="(glad, i) in gladiatorsPlayerTwo" v-bind:key="i" v-bind:gladiator="glad" :playerId=2></Gladiator>
     </div>
 </template>       
 
@@ -50,16 +50,15 @@
 
 <style scoped lang="scss">
     .board {
-        min-height: 70vh;
+        background: black;
+        min-height: 80vh;
         border: 2px solid black;
         position: relative;
         display: grid;
         position: relative;
-        grid-gap: 0;
         grid-template-columns: repeat(15, auto);
         grid-template-rows: repeat(15, auto);
         grid-auto-flow: row;
-        gap: 1px;
         height: 100%;
         width: 100%;
     }

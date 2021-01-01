@@ -37,9 +37,9 @@
     .shop-item {
         width: 100%;
         margin-top: 1rem;
-        text-align: end;
-        position: relative;
-        background-color: #f6c663;
+        align-items: stretch;
+        justify-content: flex-start;
+        border: 1px solid black;
         &.gladKnight .layer{
             background-image: url("~@/assets/images/gladiators/sword.png");
         }

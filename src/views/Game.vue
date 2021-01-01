@@ -5,7 +5,7 @@
       <v-col cols=12 sm=2 xs=2>
         <v-card height="100%"
               class="d-flex flex-column justify-space-between"
-              flat>
+              flat color="rgb(255, 0, 0, 0)">
           <PlayerInfo v-bind:player="player2" :turn="turnPlayer == 2"/>
           <TurnButton/>
           <PlayerInfo v-bind:player="player1" :turn="turnPlayer == 1"/>
@@ -17,7 +17,7 @@
       <v-col cols=12 sm=2 xs=2>
            <v-card height="100%"
               class="d-flex flex-column justify-space-between"
-              flat>
+              flat color="rgb(255, 0, 0, 0)">
 
               <GladiatorInfo v-bind:gladiator="hoveredGladiator"/>
               <GladiatorShop v-bind:gladiators="shopGladiators"/>

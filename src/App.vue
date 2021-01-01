@@ -38,7 +38,9 @@
           </v-list-item-group>
         </v-list>
     </v-navigation-drawer>
-    <router-view class="v-router"/>
+    <transition name="fade">
+      <router-view class="v-router"/>
+    </transition>
   </div>
 </v-app>
 </template>
@@ -71,44 +73,43 @@
 </script>
 
 <style lang="scss" scoped>
-@font-face {
-  font-family: "Moonflower";
-  src: url("~@/assets/fonts/MoonFlowerBold.ttf");
-}
-html {
-  height: 100%;
-}
-body {
-  min-height: 100%;
-}
-body {
-  background: #2980B9;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-.v-title {
-  padding-left: 1rem;
-  font-size: 2.25rem !important;
-  font-family: "Moonflower";
-}
-.v-image {
-    border: 3px solid white;
-    border-radius: 32px;
-}
-.swipe-enter-active,
-.swipe-leave-active {
-    transition: opacity 0.7s, transform 0.7s;
-}
-.swipe-enter,
-.swipe-leave-active {
-    opacity: 0;
-    transform: scale(0);
-}
+  @font-face {
+    font-family: "Moonflower";
+    src: url("~@/assets/fonts/MoonFlowerBold.ttf");
+  }
+  html {
+    height: 100%;
+  }
+  body {
+    min-height: 100%;
+  }
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background-image: url("~@/assets/background.jpg");
+    background-size: cover;
+  }
+  .v-title {
+    padding-left: 1rem;
+    font-size: 2.25rem !important;
+    font-family: "Moonflower";
+  }
+  .v-image {
+      border: 3px solid white;
+      border-radius: 32px;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition-property: opacity;
+    transition-duration: .5s;
+  }
+
+  .fade-enter-active {
+    transition-delay: .5s;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0
+  }
 </style>

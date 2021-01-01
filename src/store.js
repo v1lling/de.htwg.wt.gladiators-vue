@@ -119,7 +119,7 @@ websocket.onmessage = function (e) {
       gameEvent = response[1];
   store.commit('SET_CONTROLLER', gameController);
   store.commit('SET_EVENT', gameEvent);
-
+  store.commit('SET_HIGHLIGHTEDTILES', {});
   switch(gameEvent.eventType) {
     case "Connected":
       store.commit('SET_PLAYERID', gameEvent.player);
