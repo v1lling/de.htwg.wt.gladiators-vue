@@ -1,15 +1,18 @@
 <template>
-    <div class="gladiatorinfo">
-        <div class="gladiatorinfo-image" :class="getClass()"/>
-        <div>AP: <span>
-            {{ gladiator && gladiator.attackPoints || "-" }}
-        </span></div>
-        <div>HP: <span>
-            {{ gladiator && gladiator.healthPoints || "-" }}
-        </span></div>
-        <div>MP: <span>
-            {{ gladiator && gladiator.movementPoints || "-" }}
-        </span></div>
+    <div>
+        Stats
+        <div class="gladiatorinfo">
+            <div class="gladiatorinfo-image" :class="getClass()"/>
+            <div>AP: <span>
+                {{ gladiator && gladiator.attackPoints || "-" }}
+            </span></div>
+            <div>HP: <span>
+                {{ gladiator && gladiator.healthPoints || "-" }}
+            </span></div>
+            <div>MP: <span>
+                {{ gladiator && gladiator.movementPoints || "-" }}
+            </span></div>
+        </div>
     </div>
 </template>
 

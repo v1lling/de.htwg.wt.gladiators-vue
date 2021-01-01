@@ -1,5 +1,6 @@
 <template>
-    <div class="gladiator-shop" >
+    <div class="gladiator-shop">
+        Shop
         <ShopItem v-for="(gladiator, index) in gladiators" v-bind:key=index v-bind:gladiator="gladiator" :shopIndex="index + 1"/>
     </div>
 </template>

@@ -1,23 +1,26 @@
 <template>
-    <div class="playerinfo" :class="getClass">
-        <div class="playerinfo-row">
-            <div>Name:</div>
-            <div id="idPlayer2Name">
-                {{ player && player.name || "-" }}
+    <div>
+        Player {{player.id}}
+        <div class="playerinfo" :class="getClass">
+            <div class="playerinfo-row">
+                <div>Name:</div>
+                <div id="idPlayer2Name">
+                    {{ player && player.name || "-" }}
+                </div>
             </div>
+            <div class="playerinfo-row">
+                <div>Base:</div>
+                <div id="idPlayer2Health">
+                    {{ player && player.health || "-" }}
+                </div>
+            </div>
+            <div class="playerinfo-row">
+                <div>Credits:</div>
+                <div id="idPlayer2Credits">
+                    {{ player && player.credits || "-" }}
+                </div>
+            </div> 
         </div>
-        <div class="playerinfo-row">
-            <div>Base:</div>
-            <div id="idPlayer2Health">
-                {{ player && player.health || "-" }}
-            </div>
-        </div>
-        <div class="playerinfo-row">
-            <div>Credits:</div>
-            <div id="idPlayer2Credits">
-                {{ player && player.credits || "-" }}
-            </div>
-        </div> 
     </div>
 </template>
 
