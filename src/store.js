@@ -31,7 +31,7 @@ const store = new Vuex.Store({
     endTurn() {
       websocket.send(JSON.stringify({"commandType": "EndTurn"}));
     },
-    connectPlayer(params) {
+    connectPlayer(commit, params) {
       let oPayload = {
         "commandType" : params.id == 1 ? "NamePlayerOne": "NamePlayerTwo",
         "name": params.name

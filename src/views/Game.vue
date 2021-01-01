@@ -1,5 +1,6 @@
 <template>
   <v-container>  
+    <PlayerInput v-if="openPlayerSlot && !myPlayerId" :playerId="openPlayerSlot"/>
     <v-row>
       <v-col cols=2>
         <v-row>
@@ -31,7 +32,7 @@ import GladiatorInfo from '@/components/interface/gladiator-info.vue';
 import GladiatorShop from '@/components/interface/shop/shop.vue';
 import PlayerInfo from '@/components/interface/player-info.vue';
 import TurnButton from '@/components/interface/turn-button.vue';
-//import PlayerInput from '@/components/interface/player-input.vue';
+import PlayerInput from '@/components/interface/player-input.vue';
 
 export default {
   name: 'Game',
@@ -45,7 +46,7 @@ export default {
     GladiatorInfo,
     GladiatorShop,
     PlayerInfo,
-  //  PlayerInput,
+    PlayerInput,
     TurnButton
   },
   mounted() {
@@ -75,7 +76,10 @@ export default {
       } else {    
           return null;
       }
-  },
+    },
+    myPlayerId() {
+      return this.$store.state.myPlayerId
+    }
   }
 }
 </script>

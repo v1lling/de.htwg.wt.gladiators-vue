@@ -1,7 +1,7 @@
 <template>
-    <button :disabled="buttonDisabled" type="button" class="btn btn-rounded turnbutton" @click="endTurn()"> 
+    <v-btn :disabled="buttonDisabled" type="button" class="btn btn-rounded turnbutton" @click="endTurn()"> 
         {{ buttonText }}
-    </button>
+    </v-btn>
 </template>
 
 <script>
@@ -46,10 +46,10 @@
 
 <style scoped lang="scss">
     .turnbutton.btn {
-        background: #d3b0a8;
+  //      background: #d3b0a8;
         background-position: center;
         background-size: auto;
-        background-color: #d89755;
+    //    background-color: #d89755;
         background-image: url("/assets/images/shield_transparent.png"); 
         animation: animatedBackground 30s linear infinite;
         &:disabled {
@@ -57,10 +57,10 @@
             cursor: default;
         }
         &.button-turn {
-            background: #28a745;
+         //   background: #28a745;
         }
         &.button-spec {
-            background-size: auto;
+         //   background-size: auto;
         }
     }
 </style>

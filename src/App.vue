@@ -1,4 +1,5 @@
 <template>
+<v-app>
   <div id = "app">
     <v-toolbar >
       <v-img
@@ -27,7 +28,6 @@
           nav
           dense>
           <v-list-item-group
-            v-model="group"
             active-class="deep-purple--text text--accent-4">
             <v-list-item to="/">
               <v-list-item-title >Game</v-list-item-title>
@@ -40,6 +40,7 @@
     </v-navigation-drawer>
     <router-view class="v-router"/>
   </div>
+</v-app>
 </template>
 
 <script>

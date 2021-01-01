@@ -1,52 +1,52 @@
 <template>
-    <div>
-        lol
-    </div>
+    <modal adaptive name="my-first-modal">
+        Play as Player {{playerId}}
+        <v-text-field
+            v-model="name"
+            label="Name"
+            :rules="rules"
+            hide-details="auto"></v-text-field>
+        <v-btn
+            x-large
+            color="teal"
+            dark
+            @click="submitModal()">
+            Play
+        </v-btn>
+    </modal>
 </template>
 
 <script>
     import Vue from 'vue';
     export default Vue.component('player-input', {
-        data: function(){
-            return {
-                name: '',
-            } 
-        },
+        data: () => ({
+            name: "",
+            rules: [
+                value => !!value || 'Required.',
+                value => (value && value.length <= 6) || 'Max 6 characters',
+            ],
+        }),
         props: {
-            playerId: Number,
+            playerId: Number
         },
         methods: {
-
+            show() {
+                this.$modal.show('my-first-modal');
+            },
+            hide() {
+                this.$modal.hide('my-first-modal');
+            },
+            submitModal() {
+                let props = { name: this.name, id: this.playerId }
+                this.$store.dispatch("connectPlayer", props);
+            }
+        },
+        mounted () {
+            this.show()
         }
     });
 </script>
 
 <style scoped lang="scss">
-    .modal {
-        .form-control {
-            font-family: 'Arial';
-        }
-        .modal-header {
-            justify-content: center;
-        }
-        .modal-dialog {
-            top: 30%;
-        }
-        .avatar {
-            height: 5rem;
-            width: 5rem;
-            border-radius: 10px;
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        &.player-one .avatar {
-            background-image: url("/assets/images/board/temple.png");
-        }
-        &.player-two .avatar {
-            background-image: url("/assets/images/board/colloseum.png");
-        }
-    }
-    #idModalHeader {
-        font-size: 3rem;
-    }
+
 </style>
