@@ -42,6 +42,20 @@
       <router-view class="v-router"/>
     </transition>
   </div>
+  <v-footer dark padless>
+    <v-card-title>
+         Written by Sascha Villing & Sebastian Voigt
+          <v-spacer></v-spacer>
+          <v-btn
+            class="mx-4"
+            dark
+            icon>
+            <v-icon size="24px">
+              mdi-github
+            </v-icon>
+          </v-btn>
+      </v-card-title>
+  </v-footer>
 </v-app>
 </template>
 
