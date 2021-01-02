@@ -29,12 +29,16 @@
         },
         methods: {
             clickGladiator() {
-                var sGlad = {
-                    gladiator: this.gladiator,
-                    source: "Board"
+                if (this.$store.getters.selectedGladiator.source == "Board") {
+                    this.$store.dispatch("moveGladiator", this.gladiator.position);
+                } else {
+                    var sGlad = {
+                        gladiator: this.gladiator,
+                        source: "Board"
+                    }
+                    this.$store.commit('SET_SELECTEDGLADIATOR', sGlad);
+                    this.$store.dispatch("hightlightTiles", this.gladiator.position);
                 }
-                this.$store.commit('SET_SELECTEDGLADIATOR', sGlad);
-                this.$store.dispatch("hightlightTiles", this.gladiator.position);
             }
         }
     });

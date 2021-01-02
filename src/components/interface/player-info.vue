@@ -1,6 +1,6 @@
 <template>
     <div>
-        Player {{player.id}}
+        Player {{ player && player.id}}
         <div class="playerinfo" :class="getClass">
             <div class="playerinfo-row">
                 <div>Name:</div>

@@ -1,6 +1,16 @@
 <template>
   <v-container>  
     <PlayerInput v-if="openPlayerSlot && !myPlayerId" :playerId="openPlayerSlot"/>
+    <v-alert :value="alert.show"
+      color="red"
+      dismissible
+      dense
+      dark
+      type="error"
+      border="top"
+      transition="fade">
+      {{ alert.message }}
+    </v-alert>
     <v-row>
       <v-col cols=12 sm=2 xs=2>
         <v-card height="100%"
@@ -39,7 +49,7 @@ export default {
   name: 'Game',
   data: function() {
     return {
-      dialog: true
+      
     }
   },
   components: {
@@ -80,7 +90,29 @@ export default {
     },
     myPlayerId() {
       return this.$store.state.myPlayerId
+    },
+    alert() {
+      return this.$store.state.alert
     }
   }
 }
 </script>
+
+<style scoped>
+.v-alert {
+  position:absolute;
+  z-index: 99;
+  top: 12px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%)
+}
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .2s;
+}
+.fade-enter, .fade-leave-active {
+  transition-duration: 2s;
+  opacity: 0
+}
+</style>

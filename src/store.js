@@ -7,10 +7,18 @@ import $ from 'jquery'
 const initialState = {
   controller: {},
   event: "",
+  alert: {
+    show: false,
+    message: ""
+  },
   myPlayerId: null,
   myHoveredGladiator: {},
-  mySelectedGladiator: {},
-  myHighlightedTiles: {}
+  mySelectedGladiator: {
+    source: "",
+    gladiator: {}
+  },
+  myHighlightedTiles: {},
+  
 };
 
 var websocket = new WebSocket("ws://localhost:9000/websocket");
@@ -89,7 +97,10 @@ const store = new Vuex.Store({
     },
     SET_HIGHLIGHTEDTILES(state, highlightesTiles) {
       state.myHighlightedTiles = highlightesTiles
-    }
+    },
+    SET_ALERT(state, alert) {
+      state.alert = alert
+    },
   },
   getters: {
     boardTiles: state => {
@@ -112,6 +123,7 @@ websocket.onclose = function () {
 };
 websocket.onerror = function (error) {
   console.log('Error Occured: ' + error);
+  
 };
 websocket.onmessage = function (e) {
   let response = JSON.parse(e.data),
@@ -120,10 +132,17 @@ websocket.onmessage = function (e) {
   store.commit('SET_CONTROLLER', gameController);
   store.commit('SET_EVENT', gameEvent);
   store.commit('SET_HIGHLIGHTEDTILES', {});
+  store.commit('SET_SELECTEDGLADIATOR', {});
   switch(gameEvent.eventType) {
     case "Connected":
       store.commit('SET_PLAYERID', gameEvent.player);
       console.log("Connected to the game");
+      break;
+    case "ErrorMessage":
+      store.commit('SET_ALERT', {show: true, message: gameEvent.message});
+      setTimeout(() => {
+        store.commit('SET_ALERT', {show: false, message: gameEvent.message});
+      }, 5000);
   }
 }
 
