@@ -46,7 +46,7 @@
                 filter: invert(29%) sepia(94%) saturate(418%) hue-rotate(142deg) brightness(94%) contrast(88%);
             }
             &.tilePlayer2 {
-                filter: invert(27%) sepia(91%) saturate(1837%) hue-rotate(22deg) brightness(99%) contrast(99%);
+                filter: invert(17%) sepia(92%) saturate(2638%) hue-rotate(12deg) brightness(98%) contrast(97%);
             }
         }
         &.tileMove {

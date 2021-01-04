@@ -60,10 +60,6 @@
         display: flex;
         flex-direction: column;
         padding: 1rem;
-        &.playerTurn {
-            border: 5px solid red;
-            animation: wiggle 2s linear infinite;
-        }
         .playerinfo-row {
             display: flex;
             flex-direction: row;
@@ -72,10 +68,16 @@
         &.playerTurn {
             animation: pulse 1s linear infinite;
             &.player1 {
-                border: 4px solid #006b7b;
+                -webkit-box-shadow:inset 0px 0px 0px 5px#006b7b;
+                -moz-box-shadow:inset 0px 0px 0px 5px #006b7b;
+                box-shadow:inset 0px 0px 0px 5px #006b7b;
+               // border: 4px solid ;
             }
             &.player2 {
-                border: 4px solid #be5701;;
+                border: 4px solid #be5701;
+                -webkit-box-shadow:inset 0px 0px 0px 10px#006b7b;
+                -moz-box-shadow:inset 0px 0px 0px 10px #006b7b;
+                box-shadow:inset 0px 0px 0px 10px #006b7b;
             }
         }
         &:not(:last-child) {
