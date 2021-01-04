@@ -43,7 +43,7 @@
             },
             highlightedMoveTiles() {
                 return this.$store.state.myHighlightedTiles ? this.$store.state.myHighlightedTiles.tilesMove : []
-            },
+            }
         }
     });
 </script>

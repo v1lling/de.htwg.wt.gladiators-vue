@@ -71,13 +71,11 @@
                 -webkit-box-shadow:inset 0px 0px 0px 5px#006b7b;
                 -moz-box-shadow:inset 0px 0px 0px 5px #006b7b;
                 box-shadow:inset 0px 0px 0px 5px #006b7b;
-               // border: 4px solid ;
             }
             &.player2 {
-                border: 4px solid #be5701;
-                -webkit-box-shadow:inset 0px 0px 0px 10px#006b7b;
-                -moz-box-shadow:inset 0px 0px 0px 10px #006b7b;
-                box-shadow:inset 0px 0px 0px 10px #006b7b;
+                -webkit-box-shadow:inset 0px 0px 0px 5px #be5701;
+                -moz-box-shadow:inset 0px 0px 0px 5px#be5701;
+                box-shadow:inset 0px 0px 0px 5px #be5701;
             }
         }
         &:not(:last-child) {

@@ -109,7 +109,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    background-image: url("~@/assets/background.jpg");
+    background-image: url("~@/assets/images/background3.jpg");
     background-size: cover;
   }
   .v-title {
