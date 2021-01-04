@@ -4,20 +4,26 @@
         <div class="playerinfo" :class="getClass">
             <div class="playerinfo-row">
                 <div>Name:</div>
-                <div id="idPlayer2Name">
+                <div>
                     {{ player && player.name || "-" }}
                 </div>
             </div>
             <div class="playerinfo-row">
                 <div>Base:</div>
-                <div id="idPlayer2Health">
-                    {{ player && player.health || "-" }}
+                <div>
+                    <animated-number
+                        :value=player.health
+                        :duration="300"
+                        :round="1"/>
                 </div>
             </div>
             <div class="playerinfo-row">
                 <div>Credits:</div>
-                <div id="idPlayer2Credits">
-                    {{ player && player.credits || "-" }}
+                <div>
+                    <animated-number
+                        :value=player.credits
+                        :duration="300"
+                        :round="1"/>
                 </div>
             </div> 
         </div>
@@ -26,7 +32,12 @@
 
 <script>
     import Vue from 'vue';
+    import AnimatedNumber from "animated-number-vue";
+
     export default Vue.component('player-info', {
+        components: {
+            AnimatedNumber
+        },
         props: {
             player: Object,
             turn: Boolean
