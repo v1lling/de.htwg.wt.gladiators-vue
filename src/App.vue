@@ -41,21 +41,26 @@
     <transition name="fade">
       <router-view class="v-router"/>
     </transition>
+    <v-footer class="pl-4" app inset absolute width="auto" dark padless height="50">
+      Sascha Villing & Sebastian Voigt
+      <v-spacer></v-spacer>
+      <v-layout justify-end>
+        <v-btn class="mx-4" dark href='https://github.com/v1lling/de.htwg.wt.gladiators-vue' target="_blank">
+          <v-icon class="pr-2" size="24px">
+            mdi-github
+          </v-icon>
+           Front-End
+        </v-btn>
+        <v-btn class="mx-4" dark href='https://github.com/v1lling/de.htwg.wt.gladiators' target="_blank">
+          <v-icon class="pr-2" size="24px">
+            mdi-github
+          </v-icon>
+          Back-End
+        </v-btn>
+      </v-layout>
+    </v-footer>
   </div>
-  <v-footer dark padless>
-    <v-card-title>
-         Written by Sascha Villing & Sebastian Voigt
-          <v-spacer></v-spacer>
-          <v-btn
-            class="mx-4"
-            dark
-            icon>
-            <v-icon size="24px">
-              mdi-github
-            </v-icon>
-          </v-btn>
-      </v-card-title>
-  </v-footer>
+ 
 </v-app>
 </template>
 
@@ -115,6 +120,9 @@
   .v-image {
       border: 3px solid white;
       border-radius: 32px;
+  }
+  .v-footer {
+    overflow: hidden;
   }
   .fade-enter-active, .fade-leave-active {
     transition-property: opacity;
