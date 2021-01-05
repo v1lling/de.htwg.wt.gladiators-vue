@@ -52,6 +52,8 @@
     .board {
         background: black;
         min-height: 80vh;
+        max-width: 80vh; //Quadrat
+        margin: auto;
         border: 2px solid black;
         position: relative;
         display: grid;
@@ -60,7 +62,6 @@
         grid-template-rows: repeat(15, auto);
         grid-auto-flow: row;
         height: 100%;
-        width: 100%;
     }
 </style>
 
