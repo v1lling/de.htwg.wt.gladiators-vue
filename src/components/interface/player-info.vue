@@ -12,7 +12,7 @@
                 <div>Base:</div>
                 <div>
                     <animated-number
-                        :value=player.health
+                        :value="player.health"
                         :duration="300"
                         :round="1"/>
                 </div>
@@ -21,7 +21,7 @@
                 <div>Credits:</div>
                 <div>
                     <animated-number
-                        :value=player.credits
+                        :value="player.credits"
                         :duration="300"
                         :round="1"/>
                 </div>

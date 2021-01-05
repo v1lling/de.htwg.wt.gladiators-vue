@@ -41,7 +41,7 @@
     <transition name="fade">
       <router-view class="v-router"/>
     </transition>
-    <v-footer class="pl-4" app inset absolute width="auto" dark padless height="50">
+    <v-footer class="pl-4" app width="auto" dark padless height="50">
       Sascha Villing & Sebastian Voigt
       <v-spacer></v-spacer>
       <v-layout justify-end>

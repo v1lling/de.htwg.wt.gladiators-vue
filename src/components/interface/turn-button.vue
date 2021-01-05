@@ -1,5 +1,10 @@
 <template>
-    <v-btn :disabled="buttonDisabled" type="button" class="btn btn-rounded turnbutton" @click="endTurn()"> 
+    <v-btn 
+        :class="{'disable-events': buttonDisabled}"
+        :color="colorButton"
+        type="button"
+        class="btn btn-rounded turnbutton"
+        @click="endTurn()"> 
         {{ buttonText }}
     </v-btn>
 </template>
@@ -24,6 +29,15 @@
                     }
                 } else {
                     return "Lobby";
+                }
+            },
+            colorButton() {
+                if (this.$store.state.myPlayerId
+                    && this.$store.state.controller.currentPlayer
+                    && this.$store.state.controller.currentPlayer.id == this.$store.state.myPlayerId ) {
+                    return 'green';
+                } else {
+                    return '';
                 }
             },
             buttonDisabled() {
@@ -60,11 +74,8 @@
             opacity: 1;
             cursor: default;
         }
-        &.button-turn {
-         //   background: #28a745;
-        }
-        &.button-spec {
-         //   background-size: auto;
+        &.disable-events {
+            pointer-events: none
         }
     }
 </style>

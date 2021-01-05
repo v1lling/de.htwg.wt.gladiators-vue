@@ -65,10 +65,26 @@ export default {
   },
   computed: {
     player1() {
-      return this.$store.state.controller.playerOne
+      if (this.$store.state.controller.playerOne) {
+        return this.$store.state.controller.playerOne
+      } else {
+        return {
+          name: "-",
+          credits: 100,
+          health: 100
+        }
+      }
     },
     player2() {
-      return this.$store.state.controller.playerTwo
+      if (this.$store.state.controller.playerTwo) {
+        return this.$store.state.controller.playerTwo
+      } else {
+        return {
+          name: "-",
+          credits: 100,
+          health: 100
+        }
+      }
     },
     hoveredGladiator() {
       return this.$store.state.myHoveredGladiator
