@@ -1,18 +1,20 @@
 <template>
     <modal adaptive name="my-first-modal">
-        Play as Player {{playerId}}
-        <v-text-field
-            v-model="name"
-            label="Name"
-            :rules="rules"
-            hide-details="auto"></v-text-field>
-        <v-btn
-            x-large
-            color="teal"
-            dark
-            @click="submitModal()">
-            Play
-        </v-btn>
+        <div class="modalcontent">
+            Play as Player {{playerId}}
+            <v-text-field
+                v-model="name"
+                label="Name"
+                :rules="rules"
+                hide-details="auto"></v-text-field>
+            <v-btn
+                x-large
+                color="teal"
+                dark
+                @click="submitModal()">
+                Play
+            </v-btn>
+        </div>
     </modal>
 </template>
 
@@ -48,5 +50,10 @@
 </script>
 
 <style scoped lang="scss">
-
+.modalcontent {
+    margin: 2rem;
+}
+.v-btn {
+    margin-top: 2rem;
+}
 </style>
