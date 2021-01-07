@@ -1,6 +1,6 @@
 <template>
     <modal adaptive name="my-first-modal">
-        <div class="modalcontent">
+        <div class="ma-12">
             Play as Player {{playerId}}
             <v-text-field
                 v-model="name"
@@ -8,6 +8,7 @@
                 :rules="rules"
                 hide-details="auto"></v-text-field>
             <v-btn
+                class="mt-8"
                 x-large
                 color="teal"
                 dark
@@ -50,10 +51,4 @@
 </script>
 
 <style scoped lang="scss">
-.modalcontent {
-    margin: 2rem;
-}
-.v-btn {
-    margin-top: 2rem;
-}
 </style>
