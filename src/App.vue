@@ -13,6 +13,7 @@
       <v-app-bar-nav-icon v-if="window.width<400" @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
       <v-toolbar-items v-if="window.width>=400" class="hidden-sm-and-down">
         <v-btn text to="/">Game</v-btn>
+        <v-btn text to="/Login">Login</v-btn>
         <v-btn text to="/About">Rules</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -31,6 +32,9 @@
             active-class="deep-purple--text text--accent-4">
             <v-list-item to="/">
               <v-list-item-title >Game</v-list-item-title>
+            </v-list-item>
+            <v-list-item to="/Login">
+              <v-list-item-title >Login</v-list-item-title>
             </v-list-item>
             <v-list-item to="/About">
               <v-list-item-title >Rules</v-list-item-title>
