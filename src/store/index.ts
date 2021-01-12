@@ -89,9 +89,9 @@ const store = new Vuex.Store({
       websocket.send(JSON.stringify(oPayload));
     },
     hightlightTiles({commit}, coordinates)  {
-      axios.get('"http://localhost:9000/gladiators/api/gladiatorSelect', axiosConfig)
+      axios.post('http://localhost:9000/gladiators/api/gladiatorSelect', {"x": coordinates.x, "y": coordinates.y})
       .then((resp) => {
-        commit('SET_HIGHLIGHTEDTILES', resp.data[0])
+        commit('SET_HIGHLIGHTEDTILES', resp.data[1])
       })
       .catch(err => {
         console.log("Something went wrong")
