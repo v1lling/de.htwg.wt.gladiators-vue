@@ -25,12 +25,12 @@
         computed: {
             getGladiatorPosition: function() {
                 console.log("getting glad pos");
-                let leftPx = this.gladiator.position.x * (100 / 15),
+                const leftPx = this.gladiator.position.x * (100 / 15),
                     topPx = this.gladiator.position.y * (100 / 15);
                 return 'top: ' + topPx + '%; left: ' + leftPx + '%;';
             },
             getHealthbarWidth: function() {
-                let perc = this.gladiator.healthPoints / this.gladiator.initialHealthPoints * 100;
+                const perc = this.gladiator.healthPoints / this.gladiator.initialHealthPoints * 100;
                 return 'width: ' + perc+'%; ' + 'background: ' + perc2color(perc);
             }
         },
@@ -39,7 +39,7 @@
                 if (this.$store.getters.selectedGladiator.source == "Board") {
                     this.$store.dispatch("moveGladiator", this.gladiator.position);
                 } else {
-                    var sGlad = {
+                    const sGlad = {
                         gladiator: this.gladiator,
                         source: "Board"
                     }

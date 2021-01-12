@@ -15,7 +15,7 @@
                 return 'tile' + this.mode + ' tilePlayer' + this.$store.state.controller.currentPlayer.id;
             },
             getHighlightPosition: function() {
-                let addition = this.mode == "Attack" ? (100/60) : 0,
+                const addition = this.mode == "Attack" ? (100/60) : 0,
                     leftPx = this.coordinates.x * (100 / 15) + addition,
                     topPx = this.coordinates.y * (100 / 15) + addition;
                 return 'top: ' + topPx + '%; left: ' + leftPx + '%;';

@@ -40,7 +40,7 @@
                 this.$modal.hide('my-first-modal');
             },
             submitModal() {
-                let props = { name: this.name, id: this.playerId }
+                const props = { name: this.name, id: this.playerId }
                 this.$store.dispatch("connectPlayer", props);
             }
         },

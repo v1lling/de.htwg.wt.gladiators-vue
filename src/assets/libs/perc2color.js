@@ -4,7 +4,8 @@
  * @param {int} iPercentage - percentage
  */
 function perc2color(iPercentage) {
-	let r, g, b = 0;
+	let r, g = 0;
+	const b = 0;
 	if(iPercentage < 50) {
 		r = 255;
 		g = Math.round(5.1 * iPercentage);
@@ -13,7 +14,7 @@ function perc2color(iPercentage) {
 		g = 255;
 		r = Math.round(510 - 5.10 * iPercentage);
 	}
-	let h = r * 0x10000 + g * 0x100 + b * 0x1;
+	const h = r * 0x10000 + g * 0x100 + b * 0x1;
 	return '#' + ('000000' + h.toString(16)).slice(-6);
 }
 export {perc2color};

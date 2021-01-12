@@ -4,8 +4,8 @@ module.exports = {
   ],
   pwa: {
     workboxOptions: {
-      skipWaiting: true,
-      clientsClaim: true,
+        skipWaiting: true,
+        navigateFallback: 'index.html',
     }
-  }
+  },
 }

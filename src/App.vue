@@ -10,10 +10,9 @@
       </v-img>
       <v-toolbar-title class="v-title">Gladiators</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-app-bar-nav-icon v-if="window.width<400" @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
-      <v-toolbar-items v-if="window.width>=400" class="hidden-sm-and-down">
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <v-toolbar-items class="hidden-sm-and-down">
         <v-btn text to="/">Game</v-btn>
-        <v-btn text to="/Login">Login</v-btn>
         <v-btn text to="/About">Rules</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -33,18 +32,13 @@
             <v-list-item to="/">
               <v-list-item-title >Game</v-list-item-title>
             </v-list-item>
-            <v-list-item to="/Login">
-              <v-list-item-title >Login</v-list-item-title>
-            </v-list-item>
             <v-list-item to="/About">
               <v-list-item-title >Rules</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
         </v-list>
     </v-navigation-drawer>
-    <transition name="fade">
-      <router-view class="v-router"/>
-    </transition>
+    <router-view class="v-router"/>
     <v-footer class="pl-4" app width="auto" dark padless height="50">
       Sascha Villing & Sebastian Voigt
       <v-spacer></v-spacer>
@@ -79,6 +73,9 @@
         drawer: null
       }
     },
+    computed : {
+      isLoggedIn : function(){ return this.$store.getters.isLoggedIn}
+    },
     created() {
         window.addEventListener('resize', this.handleResize);
         this.handleResize();
@@ -87,10 +84,16 @@
         window.removeEventListener('resize', this.handleResize);
     },
     methods: {
-        handleResize() {
-            this.window.width = window.innerWidth;
-            this.window.height = window.innerHeight;
-        }
+      handleResize() {
+          this.window.width = window.innerWidth;
+          this.window.height = window.innerHeight;
+      },
+      logout: function () {
+        this.$store.dispatch('logout')
+        .then(() => {
+          this.$router.push('/login')
+        })
+      }
     }
   }
 </script>
@@ -129,16 +132,5 @@
   }
   .v-footer {
     overflow: hidden;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition-property: opacity;
-    transition-duration: .5s;
-  }
-
-  .fade-enter-active {
-    transition-delay: .5s;
-  }
-  .fade-enter, .fade-leave-active {
-    opacity: 0
   }
 </style>

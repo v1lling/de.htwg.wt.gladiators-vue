@@ -22,7 +22,7 @@
         },
         methods: {
             updateSelectedGladiator() {
-                var sGlad = {
+                const sGlad = {
                     gladiator: this.gladiator,
                     source: "Shop",
                     shopIndex: this.shopIndex

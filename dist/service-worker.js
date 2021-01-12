@@ -14,14 +14,12 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.1acef411682c7d882fd208a519191960.js"
+  "/precache-manifest.01d6d9a193796b68a916924f6f645e5f.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "de.htwg.wt.gladiators-vue"});
+workbox.core.setCacheNameDetails({prefix: "de.htwg.gladiators-vue2"});
 
 workbox.core.skipWaiting();
-
-workbox.core.clientsClaim();
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
@@ -30,3 +28,5 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("index.html"));
