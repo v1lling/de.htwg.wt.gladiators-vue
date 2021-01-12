@@ -1,4 +1,4 @@
-# de.htwg.gladiators-vue2
+# Gladiators - The Game
 
 ## Project setup
 ```

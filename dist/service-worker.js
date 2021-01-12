@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.01d6d9a193796b68a916924f6f645e5f.js"
+  "/precache-manifest.5c9dfae546a650ad51d37c31e5a2be1e.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "de.htwg.gladiators-vue2"});
+workbox.core.setCacheNameDetails({prefix: "de.htwg.gladiators-vue"});
 
 workbox.core.skipWaiting();
 
