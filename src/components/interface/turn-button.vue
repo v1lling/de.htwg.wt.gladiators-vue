@@ -67,7 +67,7 @@
         border: 1px solid black;
         background-position: center;
         background-size: auto;
-        background-image: url("~@/assets/images/shield_transparent.png");
+        background-image: url("/img/shield_transparent.png");
         background-repeat: unset;
         animation: animatedBackground 30s linear infinite;
         &:disabled {

@@ -41,19 +41,19 @@
         background-position: center;
         background-repeat: no-repeat;
         &.tileSand {
-            background-image: url("~@/assets/images/board/sand.png");
+            background-image: url("/img/board/sand.png");
         }
         &.tileBase1 {
-            background-image: url("~@/assets/images/board/colloseum.png");
+            background-image: url("/img/board/colloseum.png");
         }
         &.tileBase2 {
-            background-image: url("~@/assets/images/board/temple.png");
+            background-image: url("/img/board/temple.png");
         }
         &.tilePalm {
-            background-image: url("~@/assets/images/board/palm.png");
+            background-image: url("/img/board/palm.png");
         }
         &.tileMine {
-            background-image:url("~@/assets/images/board/gold.png");
+            background-image:url("/img/board/gold.png");
         }
         &:hover {
             box-shadow: inset 0px 0px 0px 36px rgba(255, 255, 255, .5);

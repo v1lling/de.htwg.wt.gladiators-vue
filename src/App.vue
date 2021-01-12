@@ -3,7 +3,7 @@
   <div id = "app">
     <v-toolbar dark>
       <v-img
-        src="@/assets/logo.png"
+        src="/img/logo.png"
         max-height="40"
         max-width="40"
         contain>
@@ -101,7 +101,7 @@
 <style lang="scss" scoped>
   @font-face {
     font-family: "Moonflower";
-    src: url("~@/assets/fonts/MoonFlowerBold.ttf");
+    src: url("/fonts/MoonFlowerBold.ttf");
   }
   html {
     height: 100%;
@@ -118,7 +118,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    background-image: url("~@/assets/images/background3.jpg");
+    background-image: url("/img/background3.jpg");
     background-size: cover;
   }
   .v-title {

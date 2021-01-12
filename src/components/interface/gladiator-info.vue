@@ -64,13 +64,13 @@
         height: 100%;
         opacity: 0.1;
         &.gladKnight {
-            background-image: url("~@/assets/images/gladiators/sword.png");
+            background-image: url("/img/gladiators/sword.png");
         }
         &.gladArcher {
-            background-image: url("~@/assets/images/gladiators/bow.png"); 
+            background-image: url("/img/gladiators/bow.png"); 
         }
         &.gladTank {
-            background-image: url("~@/assets/images/gladiators/shield.png"); 
+            background-image: url("/img/gladiators/shield.png"); 
         }
     }
 </style>

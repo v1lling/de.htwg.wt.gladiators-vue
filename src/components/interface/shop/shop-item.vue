@@ -41,13 +41,13 @@
         justify-content: flex-start;
         border: 1px solid black;
         &.gladKnight .layer{
-            background-image: url("~@/assets/images/gladiators/sword.png");
+            background-image: url("/img/gladiators/sword.png");
         }
         &.gladArcher .layer {
-            background-image: url("~@/assets/images/gladiators/bow.png"); 
+            background-image: url("/img/gladiators/bow.png"); 
         }
         &.gladTank .layer {
-            background-image: url("~@/assets/images/gladiators/shield.png"); 
+            background-image: url("/img/gladiators/shield.png"); 
         }
         &:hover {
             background-color: #8c6413;
