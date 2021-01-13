@@ -64,6 +64,6 @@ td {
     padding: 10px 0;
 }
 th {
-    font-weight: 100;
+    font-weight: normal;
 }
 </style>
