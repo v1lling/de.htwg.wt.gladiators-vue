@@ -25,3 +25,8 @@
         mixins: [mixinDetectingMobile]
     });
 </script>
+<style scoped>
+.v-footer {
+  overflow: hidden;
+}
+</style>

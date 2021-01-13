@@ -49,3 +49,14 @@
       }
     });
 </script>
+<style scoped>
+.v-title {
+  padding-left: 1rem;
+  font-size: 2.25rem !important;
+  font-family: "Moonflower";
+}
+.v-image {
+    border: 3px solid white;
+    border-radius: 32px;
+}
+</style>
