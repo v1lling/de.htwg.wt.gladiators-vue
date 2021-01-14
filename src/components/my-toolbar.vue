@@ -13,7 +13,7 @@
         <v-toolbar-items class="hidden-sm-and-down">
           <v-btn text to="/">Rules</v-btn>
           <v-btn text v-if=this.$store.getters.isLoggedIn to="/Game">Game</v-btn>
-          <v-btn text v-if=!this.$store.getters.isLoggedIn to="/Login">Login</v-btn>
+          <v-btn text c to="/Login">Login</v-btn>
           <v-btn text v-if=this.$store.getters.isLoggedIn @click="logout()">Logout</v-btn>
         </v-toolbar-items>
       </v-toolbar>
@@ -30,11 +30,17 @@
             dense>
             <v-list-item-group
               active-class="deep-purple--text text--accent-4">
-              <v-list-item to="/">
-                <v-list-item-title >Game</v-list-item-title>
+              <v-list-item v-if=!this.$store.getters.isLoggedIn to="/Login">
+                <v-list-item-title >Login</v-list-item-title>
               </v-list-item>
-              <v-list-item to="/About">
+              <v-list-item v-if=this.$store.getters.isLoggedIn to="/Game">
+                <v-list-item-title>Game</v-list-item-title>
+              </v-list-item>
+              <v-list-item to="/">
                 <v-list-item-title >Rules</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="logout()" v-if=this.$store.getters.isLoggedIn>
+                <v-list-item-title>Logout</v-list-item-title>
               </v-list-item>
             </v-list-item-group>
           </v-list>
