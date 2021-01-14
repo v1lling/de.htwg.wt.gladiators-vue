@@ -11,8 +11,10 @@
         <v-spacer></v-spacer>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-app-bar-nav-icon>
         <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn text to="/">Game</v-btn>
-          <v-btn text to="/About">Rules</v-btn>
+          <v-btn text to="/">Rules</v-btn>
+          <v-btn text v-if=this.$store.getters.isLoggedIn to="/Game">Game</v-btn>
+          <v-btn text v-if=!this.$store.getters.isLoggedIn to="/Login">Login</v-btn>
+          <v-btn text v-if=this.$store.getters.isLoggedIn @click="logout()">Logout</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       
@@ -45,6 +47,11 @@
       data() {
         return {
           drawer: null
+        }
+      },
+      methods: {
+        logout: function() {
+            this.$store.dispatch("logout");
         }
       }
     });
