@@ -1,22 +1,36 @@
 <template>
-    <div>
-        <h2>Login</h2>
-        <form @submit.prevent="handleSubmit">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" v-model="username" name="username" class="form-control" :class="{ 'is-invalid': !username }" />
-                <div v-show="!username" class="invalid-feedback">Username is required</div>
-            </div>
-            <div class="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" v-model="password" name="password" class="form-control" :class="{ 'is-invalid': !password }" />
-                <div v-show="!password" class="invalid-feedback">Password is required</div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary">Login</button>
-                <!--<router-link to="/register" class="btn btn-link">Register</router-link>-->
-            </div>
-        </form>
+    <div class="loginpage pt-8">
+        <div>
+            <h2>Login</h2>
+            <v-form
+                ref="form"
+                >
+                <div class="form-group">
+                    <v-text-field
+                        v-model="email"
+                        label="E-Mail"
+                        :rules="emailRules"
+                        hide-details="auto"></v-text-field>
+                </div>
+                <div class="form-group">
+                    <v-text-field
+                        type="password"
+                        v-model="password"
+                        label="Password"
+                        hide-details="auto"></v-text-field>
+                </div>
+                <div class="form-group pt-4">
+                    <v-btn @click=login>Login</v-btn>
+                    <v-btn to="/register" class="ml-4">Register</v-btn>
+                    <v-btn @click=googleLogin class="ml-4">
+                        <v-icon class="pr-2" size="24px">
+                            mdi-google
+                        </v-icon>
+                        Sign In
+                    </v-btn>
+                </div>
+            </v-form>
+        </div>
     </div>
 </template>
 
@@ -25,19 +39,31 @@
 export default {
     data () {
         return {
-            username: '',
-            password: ''
+            email: '',
+            password: '',
+            emailRules: [
+                value => !!value || 'Required.',
+                 v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail must be valid'
+            ],
         }
     },
     methods: {
-        handleSubmit () {
+        login() {
             const bodyFormData = new FormData();
-            bodyFormData.append('email', this.username);
+            bodyFormData.append('email', this.email);
             bodyFormData.append('password', this.password);
             bodyFormData.append('rememberMe', true);
-            //bodyFormData.append('csrfToken', "2a9a12b11c6e8f8f7ffdf8a38e66c7ea03fca648-1610624109198-ece04ef5b32eb6228c7979c2");
             this.$store.dispatch("login", bodyFormData);
+        },
+        googleLogin() {
+            this.$store.dispatch("googleLogin");
         }
     }
 };
 </script>
+<style scoped>
+.loginpage {
+  width:400px;
+  margin:0 auto;
+}
+</style>

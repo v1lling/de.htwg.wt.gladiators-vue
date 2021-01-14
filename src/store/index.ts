@@ -43,6 +43,7 @@ const axiosConfig = {
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
+    'Access-Control-Allow-Origin': 'http://localhost:8080'
   },
   crossdomain: true
 };
@@ -130,6 +131,26 @@ const store = new Vuex.Store({
       .catch(err => {
         console.log("Something went wrong");
       })
+    },
+    googleLogin({commit}) {
+      axios(
+        jQuery.extend(axiosConfig, {
+        method: 'get',
+        mode: 'navigate',
+        url: 'http://localhost:9000/authenticate/google',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }))
+      .then(function (response) {
+        commit('SET_COOKIE', document.cookie)
+        if (store.getters.isLoggedIn) {
+          window.location.replace("/");
+        }
+      })
+      .catch(function (response) {
+        console.log("Something went wrong");
+      });
     }
   },
   mutations: {
