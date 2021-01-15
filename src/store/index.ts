@@ -2,8 +2,11 @@ import Vuex, { mapGetters } from 'vuex'
 import Vue from 'vue'
 import axios from 'axios'
 import router from '../router'
-
+import $ from 'jquery'
 Vue.use(Vuex);
+
+const USE_LOCAL_BACKEND = false;
+const SERVER = USE_LOCAL_BACKEND ? "localhost:9000" : "192.168.2.103:9000"
 
 const initialState = {
   controller: {
@@ -39,13 +42,12 @@ const initialState = {
   cookie: document.cookie
 };
 
-const websocket = new WebSocket("ws://localhost:9000/websocket");
+const websocket = new WebSocket("ws://"+ SERVER + "/websocket");
 const axiosConfig = {
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Access-Control-Allow-Origin': 'http://localhost:8080'
   },
   crossdomain: true
 };
@@ -59,7 +61,7 @@ const store = new Vuex.Store({
       }, 5000);
     },
     getJson({commit}) {
-        axios.get('http://localhost:9000/json', axiosConfig)
+        axios.get("http://"+ SERVER + "/json", axiosConfig)
         .then((resp) => {
           commit('SET_CONTROLLER', resp.data[0])
         })
@@ -100,7 +102,7 @@ const store = new Vuex.Store({
       websocket.send(JSON.stringify(oPayload));
     },
     hightlightTiles({commit}, coordinates)  {
-      axios.post('http://localhost:9000/gladiators/api/gladiatorSelect', {"x": coordinates.x, "y": coordinates.y})
+      axios.post("http://" + SERVER + "/gladiators/api/gladiatorSelect", {"x": coordinates.x, "y": coordinates.y})
       .then((resp) => {
         commit('SET_HIGHLIGHTEDTILES', resp.data[1])
       })
@@ -109,11 +111,7 @@ const store = new Vuex.Store({
       })
     },
     login({commit}, user) {
-      axios(
-        jQuery.extend(axiosConfig, {
-        method: 'post',
-        url: 'http://localhost:9000/signIn',
-        data: user,
+      axios.post("http://" + SERVER + "/signIn", user, $.extend(axiosConfig, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
@@ -130,7 +128,7 @@ const store = new Vuex.Store({
       });
     },
     logout({commit}) {
-      axios.get('http://localhost:9000/signOut', axiosConfig)
+      axios.get("http://" + SERVER + "/signOut", axiosConfig)
       .then((resp) => {
         if (!store.getters.isLoggedIn) {
           router.push("/Login");
@@ -142,16 +140,13 @@ const store = new Vuex.Store({
       })
     },
     register({commit}, user) {
-      axios(
-        jQuery.extend(axiosConfig, {
-        method: 'post',
-        url: 'http://localhost:9000/signUp',
-        data: user,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+      axios.post("http://" + SERVER + "/signUp", user, $.extend(axiosConfig, {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
         }
-      }))
-      .then(function (response) {
+      ))
+      .then(function () {
         router.push("/login");
         store.dispatch("showAlert", {type: "success", message: "Register Successful"});
       }.bind(this))
@@ -160,11 +155,8 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
-      axios(
-        jQuery.extend(axiosConfig, {
-        method: 'get',
-        mode: 'navigate',
-        url: 'http://localhost:9000/authenticate/google',
+      axios.get("http://" + SERVER + "/authenticate/google",
+        $.extend(axiosConfig, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
