@@ -2,6 +2,15 @@
 <v-app>
   <div id = "app">
     <MyToolbar/>
+    <v-alert :value="alert.show"
+      dismissible
+      dense
+      dark
+      :type="alert.type"
+      border="top"
+      transition="fade">
+      {{ alert.message }}
+    </v-alert>
     <router-view class="v-router"/>
     <MyFooter/>
   </div>
@@ -23,7 +32,10 @@
         }
       }
     },
-    computed : {  
+    computed : {
+      alert() {
+        return this.$store.state.alert
+      }
     },
     created() {
         window.addEventListener('resize', this.handleResize);
@@ -63,5 +75,13 @@
     color: #2c3e50;
     background-image: url("/img/background3.jpg");
     background-size: cover;
+  }
+  .v-alert {
+    position:absolute;
+    z-index: 99;
+    top: 8px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%)
   }
 </style>

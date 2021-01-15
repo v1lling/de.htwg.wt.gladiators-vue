@@ -14,7 +14,7 @@ Vue.prototype.$http = Axios;
 new Vue({
   vuetify,
   store: store,
-  router,
+  router: router,
   components: {
     App
   },

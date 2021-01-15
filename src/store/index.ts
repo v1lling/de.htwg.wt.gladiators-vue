@@ -1,6 +1,7 @@
 import Vuex, { mapGetters } from 'vuex'
 import Vue from 'vue'
 import axios from 'axios'
+import router from '../router'
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ const initialState = {
   event: "",
   alert: {
     show: false,
+    type: "success",
     message: ""
   },
   myPlayerId: null,
@@ -50,6 +52,12 @@ const axiosConfig = {
 const store = new Vuex.Store({
   state: initialState,
   actions: {
+    showAlert(commit, alert) {
+      store.commit('SET_ALERT', {show: true, type: alert.type, message: alert.message});
+      setTimeout(() => {
+        store.commit('SET_ALERT', {show: false, type: alert.type, message: alert.message});
+      }, 5000);
+    },
     getJson({commit}) {
         axios.get('http://localhost:9000/json', axiosConfig)
         .then((resp) => {
@@ -113,7 +121,8 @@ const store = new Vuex.Store({
       .then(function (response) {
         commit('SET_COOKIE', document.cookie)
         if (store.getters.isLoggedIn) {
-          window.location.replace("/");
+          store.dispatch("showAlert", {type: "success", message: "Login Successful"});
+          router.push("/Game");
         }
       })
       .catch(function (response) {
@@ -124,13 +133,31 @@ const store = new Vuex.Store({
       axios.get('http://localhost:9000/signOut', axiosConfig)
       .then((resp) => {
         if (!store.getters.isLoggedIn) {
-          window.location.replace("/");
+          router.push("/Login");
         }
         commit('SET_COOKIE', document.cookie)
       })
       .catch(err => {
         console.log("Something went wrong");
       })
+    },
+    register({commit}, user) {
+      axios(
+        jQuery.extend(axiosConfig, {
+        method: 'post',
+        url: 'http://localhost:9000/signUp',
+        data: user,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }))
+      .then(function (response) {
+        router.push("/login");
+        store.dispatch("showAlert", {type: "success", message: "Register Successful"});
+      }.bind(this))
+      .catch(function (response) {
+        console.log("Something went wrong");
+      });
     },
     googleLogin({commit}) {
       axios(
@@ -226,10 +253,7 @@ websocket.onmessage = function (e) {
       console.log("Connected to the game");
       break;
     case "ErrorMessage":
-      store.commit('SET_ALERT', {show: true, message: gameEvent.message});
-      setTimeout(() => {
-        store.commit('SET_ALERT', {show: false, message: gameEvent.message});
-      }, 5000);
+      store.dispatch("showAlert", {type: "error", message: gameEvent.message});
   }
 }
 
