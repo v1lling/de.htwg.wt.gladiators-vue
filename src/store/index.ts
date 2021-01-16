@@ -45,7 +45,7 @@ const initialState = {
   cookie: document.cookie
 };
 
-const websocket = new WebSocket("ws://"+ SERVER_DOMAIN + (USE_LOCAL_BACKEND? + ":9000" : "") + "/websocket");
+const websocket = new WebSocket("wss://"+ SERVER_DOMAIN + (USE_LOCAL_BACKEND? + ":9000" : "") + "/websocket");
 const axiosConfig = {
   withCredentials: true,
   headers: {
