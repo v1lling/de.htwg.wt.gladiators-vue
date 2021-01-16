@@ -113,24 +113,13 @@ const store = new Vuex.Store({
         console.log("Something went wrong")
       })
     },
-    signedIn({commit}, silent) {
+    signedIn({commit}) {
       axios.get(SERVER + "/signedIn", axiosConfig)
       .then((resp) => {
-        if (resp.data.includes("Good job bro")) {
-          commit('SET_LOGGEDIN', true);
-          if (!silent) {
-            store.dispatch("showAlert", {type: "success", message: "Login Successful"});
-            router.push("/Game");
-          }
-        } else {
-          commit('SET_LOGGEDIN', false)
-          if (!silent) {
-            store.dispatch("showAlert", {type: "error", message: "Login Failed"});
-          }
-        }
+        commit('SET_LOGGEDIN', true); 
       })
       .catch(err => {
-        console.log("Something went wrong")
+        console.log("You are not logged in")
       })
     },
     login({commit}, user) {
@@ -140,16 +129,17 @@ const store = new Vuex.Store({
         }
       }))
       .then(function (response) {
-        store.dispatch("signedIn");
+        commit('SET_LOGGEDIN', true); 
+        store.dispatch("showAlert", {type: "success", message: "Login Successful"});
+        router.push("/Game");
       })
       .catch(function (response) {
-        console.log("Something went wrong");
+        store.dispatch("showAlert", {type: "error", message: "Login Failed"});
       });
     },
     logout({commit}) {
       axios.get(SERVER + "/signOut", axiosConfig)
       .then((resp) => {
-        store.dispatch("signedIn", true);
         router.push("/Login");
       })
       .catch(err => {
