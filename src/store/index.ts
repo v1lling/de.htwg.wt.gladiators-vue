@@ -42,7 +42,7 @@ const initialState = {
   token: localStorage.getItem('token') || '',
   user: {},
   status: '',
-  cookie: document.cookie
+  isLoggedIn: false
 };
 
 const websocket = new WebSocket("wss://"+ SERVER_DOMAIN + (USE_LOCAL_BACKEND? + ":9000" : "") + "/websocket");
@@ -113,6 +113,26 @@ const store = new Vuex.Store({
         console.log("Something went wrong")
       })
     },
+    signedIn({commit}, silent) {
+      axios.get(SERVER + "/signedIn", axiosConfig)
+      .then((resp) => {
+        if (resp.data.includes("Good job bro")) {
+          commit('SET_LOGGEDIN', true);
+          if (!silent) {
+            store.dispatch("showAlert", {type: "success", message: "Login Successful"});
+            router.push("/Game");
+          }
+        } else {
+          commit('SET_LOGGEDIN', false)
+          if (!silent) {
+            store.dispatch("showAlert", {type: "error", message: "Login Failed"});
+          }
+        }
+      })
+      .catch(err => {
+        console.log("Something went wrong")
+      })
+    },
     login({commit}, user) {
       axios.post(SERVER + "/signIn", user, $.extend(axiosConfig, {
         headers: {
@@ -120,13 +140,7 @@ const store = new Vuex.Store({
         }
       }))
       .then(function (response) {
-        commit('SET_COOKIE', document.cookie)
-        if (store.getters.isLoggedIn) {
-          store.dispatch("showAlert", {type: "success", message: "Login Successful"});
-          router.push("/Game");
-        } else {
-          store.dispatch("showAlert", {type: "error", message: "Login Failed"});
-        }
+        store.dispatch("signedIn");
       })
       .catch(function (response) {
         console.log("Something went wrong");
@@ -135,10 +149,8 @@ const store = new Vuex.Store({
     logout({commit}) {
       axios.get(SERVER + "/signOut", axiosConfig)
       .then((resp) => {
-        if (!store.getters.isLoggedIn) {
-          router.push("/Login");
-        }
-        commit('SET_COOKIE', document.cookie)
+        store.dispatch("signedIn", true);
+        router.push("/Login");
       })
       .catch(err => {
         console.log("Something went wrong");
@@ -167,7 +179,6 @@ const store = new Vuex.Store({
         }
       }))
       .then(function (response) {
-        commit('SET_COOKIE', document.cookie)
         if (store.getters.isLoggedIn) {
           window.location.replace("/");
         }
@@ -199,8 +210,8 @@ const store = new Vuex.Store({
     SET_ALERT(state, alert) {
       state.alert = alert
     },
-    SET_COOKIE(state, cookie) {
-      state.cookie = cookie
+    SET_LOGGEDIN(state, loggedIn) {
+      state.isLoggedIn = loggedIn
     }
   },
   getters: {
@@ -214,14 +225,7 @@ const store = new Vuex.Store({
       return state.controller.shop ? state.controller.shop.stock : []
     },
     isLoggedIn: state => {
-      const nameEQ = "authenticator=";
-      const ca = state.cookie.split(';');
-      for(let i=0;i < ca.length;i++) {
-          let c = ca[i];
-          while (c.charAt(0)==' ') c = c.substring(1,c.length);
-          if (c.indexOf(nameEQ) == 0) return true;
-      }
-      return false;
+      return state.isLoggedIn
     }
   }
 });

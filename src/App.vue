@@ -50,6 +50,9 @@
           this.window.height = window.innerHeight;
       }
     },
+    mounted() {
+      this.$store.dispatch("signedIn", true);
+    }
   }
 </script>
 
