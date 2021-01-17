@@ -14,7 +14,7 @@
           <v-btn text to="/">Rules</v-btn>
           <v-btn text v-if=this.$store.getters.isLoggedIn to="/Game">Game</v-btn>
           <v-btn text v-if=!this.$store.getters.isLoggedIn c to="/Login">Login</v-btn>
-          <v-btn text v-if=this.$store.getters.isLoggedIn @click="logout()">Logout</v-btn>
+          <v-btn text v-if=this.$store.getters.isLoggedIn to="/User">Logout</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       
@@ -39,8 +39,8 @@
               <v-list-item to="/">
                 <v-list-item-title >Rules</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="logout()" v-if=this.$store.getters.isLoggedIn>
-                <v-list-item-title>Logout</v-list-item-title>
+              <v-list-item v-if=this.$store.getters.isLoggedIn to="/User">
+                <v-list-item-title>User</v-list-item-title>
               </v-list-item>
             </v-list-item-group>
           </v-list>
@@ -56,9 +56,7 @@
         }
       },
       methods: {
-        logout: function() {
-            this.$store.dispatch("logout");
-        }
+        
       }
     });
 </script>

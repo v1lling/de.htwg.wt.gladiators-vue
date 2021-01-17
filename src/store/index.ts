@@ -5,8 +5,8 @@ import router from '../router'
 import $ from 'jquery'
 Vue.use(Vuex);
 
-const USE_LOCAL_BACKEND = false;
-const PROTOCOL = "https";
+const USE_LOCAL_BACKEND = true;
+const PROTOCOL = "http";
 
 const SERVER_DOMAIN = "gladiators-game.herokuapp.com";
 const SERVER = USE_LOCAL_BACKEND ? PROTOCOL + "://localhost:9000" : PROTOCOL + "://" + SERVER_DOMAIN; 
@@ -115,7 +115,8 @@ const store = new Vuex.Store({
     },
     signedIn({commit}) {
       axios.get(SERVER + "/signedIn", axiosConfig)
-      .then((resp) => {
+      .then((response) => {
+        commit('SET_USER', response.data.user);
         commit('SET_LOGGEDIN', true); 
       })
       .catch(err => {
@@ -129,6 +130,7 @@ const store = new Vuex.Store({
         }
       }))
       .then(function (response) {
+        commit('SET_USER', response.data);
         commit('SET_LOGGEDIN', true); 
         store.dispatch("showAlert", {type: "success", message: "Login Successful"});
         router.push("/Game");
@@ -205,6 +207,9 @@ const store = new Vuex.Store({
     },
     SET_LOGGEDIN(state, loggedIn) {
       state.isLoggedIn = loggedIn
+    },
+    SET_USER(state, user) {
+      state.user = user
     }
   },
   getters: {
