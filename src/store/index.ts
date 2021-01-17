@@ -116,7 +116,7 @@ const store = new Vuex.Store({
     signedIn({commit}) {
       axios.get(SERVER + "/signedIn", axiosConfig)
       .then((response) => {
-        commit('SET_USER', response.data.user);
+        commit('SET_USER', response.data);
         commit('SET_LOGGEDIN', true); 
       })
       .catch(err => {
