@@ -140,7 +140,7 @@ const store = new Vuex.Store({
       });
     },
     logout({commit}) {
-      axios.get(SERVER + "/signOut", axiosConfig)
+      axios.get(SERVER + "/signOut", {withCredentials: true})
       .then((resp) => {
         router.push("/Login");
       })
