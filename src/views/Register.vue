@@ -1,7 +1,7 @@
 <template>
     <div class="loginpage pt-8">
         <div>
-            <h2>Login</h2>
+            <h2>Register</h2>
             <v-form
                 ref="form"
                 >

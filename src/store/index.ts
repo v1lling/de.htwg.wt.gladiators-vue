@@ -176,6 +176,9 @@ const store = new Vuex.Store({
       .catch(function (response) {
         console.log("Something went wrong");
       });
+    },
+    offline({commit}) {
+      console.log("store is set offline");
     }
   },
   mutations: {
