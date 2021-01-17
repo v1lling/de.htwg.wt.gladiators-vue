@@ -40,7 +40,7 @@
                 <v-list-item-title >Rules</v-list-item-title>
               </v-list-item>
               <v-list-item v-if=this.$store.getters.isLoggedIn to="/User">
-                <v-list-item-title>User</v-list-item-title>
+                <v-list-item-title>{{user.firstName}}</v-list-item-title>
               </v-list-item>
             </v-list-item-group>
           </v-list>
@@ -55,9 +55,11 @@
           drawer: null
         }
       },
-      methods: {
-        
-      }
+      computed: {
+        user() {
+            return this.$store.state.user
+        }
+    },
     });
 </script>
 <style scoped>

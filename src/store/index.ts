@@ -40,7 +40,9 @@ const initialState = {
   },
   myHighlightedTiles: {},
   token: localStorage.getItem('token') || '',
-  user: {},
+  user: {
+    firstName: ""
+  },
   status: '',
   isLoggedIn: false
 };
