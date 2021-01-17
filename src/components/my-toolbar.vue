@@ -2,7 +2,7 @@
    <div>
       <v-toolbar dark>
         <v-img
-          src="/img/logo.png"
+          src="frontend/img/logo.png"
           max-height="40"
           max-width="40"
           contain>

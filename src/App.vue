@@ -59,7 +59,7 @@
 <style lang="scss" scoped>
   @font-face {
     font-family: "Moonflower";
-    src: url("/fonts/MoonFlowerBold.ttf");
+    src: url("/frontend/fonts/MoonFlowerBold.ttf");
   }
   html {
     height: 100%;
@@ -76,7 +76,7 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    background-image: url("/img/background3.jpg");
+    background-image: url("/frontend/img/background.jpg");
     background-size: cover;
   }
   .v-alert {

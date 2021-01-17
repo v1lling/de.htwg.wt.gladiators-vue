@@ -67,13 +67,13 @@
     background-repeat: no-repeat;
     height: 78%;
     &.gladTank {
-        background-image: url("/img/gladiators/shield.png"); 
+        background-image: url("/frontend/img/gladiators/shield.png"); 
     }
     &.gladKnight {
-        background-image: url("/img/gladiators/sword.png");
+        background-image: url("/frontend/img/gladiators/sword.png");
     }
     &.gladArcher {
-        background-image: url("/img/gladiators/bow.png"); 
+        background-image: url("/frontend/img/gladiators/bow.png"); 
     }
     &.gladPlayer1 {
         filter: invert(29%) sepia(94%) saturate(418%) hue-rotate(142deg) brightness(94%) contrast(88%);
