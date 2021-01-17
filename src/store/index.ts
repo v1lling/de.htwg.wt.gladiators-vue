@@ -5,8 +5,8 @@ import router from '../router'
 import $ from 'jquery'
 Vue.use(Vuex);
 
-const USE_LOCAL_BACKEND = true;
-const PROTOCOL = "http";
+const USE_LOCAL_BACKEND = false;
+const PROTOCOL = "https";
 
 const SERVER_DOMAIN = "gladiators-game.herokuapp.com";
 const SERVER = USE_LOCAL_BACKEND ? PROTOCOL + "://localhost:9000" : PROTOCOL + "://" + SERVER_DOMAIN; 
