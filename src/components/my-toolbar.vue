@@ -14,7 +14,7 @@
           <v-btn text to="/">Rules</v-btn>
           <v-btn text v-if=this.$store.getters.isLoggedIn to="/Game">Game</v-btn>
           <v-btn text v-if=!this.$store.getters.isLoggedIn c to="/Login">Login</v-btn>
-          <v-btn text v-if=this.$store.getters.isLoggedIn to="/User">Logout</v-btn>
+          <v-btn text v-if=this.$store.getters.isLoggedIn to="/User">User</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       
