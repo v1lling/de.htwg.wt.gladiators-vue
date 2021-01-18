@@ -167,7 +167,7 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
-      var apiURL = SERVER + "/authenticate/google";
+      const apiURL = SERVER + "/authenticate/google";
       $.ajax({
           url: apiURL,
           type: "GET",
