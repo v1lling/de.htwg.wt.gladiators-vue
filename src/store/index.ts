@@ -52,7 +52,8 @@ const axiosConfig = {
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    'Accept': 'application/json',
+    'Accept': 'application/json, text/html',
+    'Access-Control-Allow-Origin': '*',
   },
   crossdomain: true
 };
@@ -166,12 +167,7 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
-      axios.get(SERVER + "/authenticate/google",
-        $.extend(axiosConfig, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }))
+      axios.get(SERVER + "/authenticate/google", axiosConfig)
       .then(function (response) {
         if (store.getters.isLoggedIn) {
           window.location.replace("/");
