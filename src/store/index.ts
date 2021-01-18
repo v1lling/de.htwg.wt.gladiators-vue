@@ -167,7 +167,8 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
-      window.open(SERVER + "/authenticate/google");
+      //window.open(SERVER + "/authenticate/google");
+      window.location.replace("/authenticate/google");
       /*
       axios.get(SERVER + "/authenticate/google", $.extend(axiosConfig, {
         headers: {
