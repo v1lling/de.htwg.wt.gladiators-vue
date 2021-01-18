@@ -167,27 +167,13 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
-      const proxyurl = "https://cors-anywhere.herokuapp.com/";
-      const url = SERVER + "/authenticate/google"
-      $.ajax({
-          url: proxyurl+ url,
-          type: "GET",
-          headers: {
-            'Access-Control-Allow-Credentials': "true",
-            'Access-Control-Allow-Origin': 'https://gladiators-game.herokuapp.com/',
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Mode': 'no-cors'
-          },
-          xhrFields: {
-              withCredentials: true
-          },
-          success: function (result) {
-              console.log(JSON.stringify(result));
-          }
-      });
-      
-    /*
-      axios.get(SERVER + "/authenticate/google", axiosConfig)
+      window.open(SERVER + "/authenticate/google");
+      /*
+      axios.get(SERVER + "/authenticate/google", $.extend(axiosConfig, {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }))
       .then(function (response) {
         if (store.getters.isLoggedIn) {
           window.location.replace("/");

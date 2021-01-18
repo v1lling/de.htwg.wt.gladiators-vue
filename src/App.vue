@@ -66,9 +66,11 @@
   }
   body {
     min-height: 100%;
+    overflow: hidden;
   }
   .v-application {
     font-family: sans-serif;
+    overflow: auto;
   }
   #app {
     min-height: 100vh;
@@ -78,6 +80,7 @@
     color: #2c3e50;
     background-image: url("/img/background3.jpg");
     background-size: cover;
+    overflow:auto
   }
   .v-alert {
     position:absolute;
