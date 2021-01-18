@@ -167,6 +167,18 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
+      var apiURL = SERVER + "/authenticate/google";
+      $.ajax({
+          url: apiURL,
+          type: "GET",
+          xhrFields: {
+              withCredentials: true
+          },
+          success: function (result) {
+              console.log(JSON.stringify(result));
+          }
+      });
+      /*
       axios.get(SERVER + "/authenticate/google", axiosConfig)
       .then(function (response) {
         if (store.getters.isLoggedIn) {
@@ -176,6 +188,7 @@ const store = new Vuex.Store({
       .catch(function (response) {
         console.log("Something went wrong");
       });
+      */
     },
     offline({commit}) {
       console.log("store is set offline");
