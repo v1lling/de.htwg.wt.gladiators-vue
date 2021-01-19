@@ -45,7 +45,8 @@
             }
         },
         mounted () {
-            this.show()
+            this.name = this.$store.state.user.firstName;
+            this.show();
         }
     });
 </script>

@@ -167,23 +167,7 @@ const store = new Vuex.Store({
       });
     },
     googleLogin({commit}) {
-      //window.open(SERVER + "/authenticate/google");
       window.location.replace("/authenticate/google");
-      /*
-      axios.get(SERVER + "/authenticate/google", $.extend(axiosConfig, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }))
-      .then(function (response) {
-        if (store.getters.isLoggedIn) {
-          window.location.replace("/");
-        }
-      })
-      .catch(function (response) {
-        console.log("Something went wrong");
-      });
-      */
     },
     offline({commit}) {
       console.log("store is set offline");

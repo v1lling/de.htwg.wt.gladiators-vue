@@ -1,12 +1,12 @@
 <template>
-    <div class="loginpage pt-8">
+    <div class="userpage pt-8">
         <h1>User</h1>
-        <h2>First name: {{user.firstName}}</h2>
-        <h2>Last name: {{user.lastName}}</h2>
-        <h2>E-mail: {{user.email}}</h2>
-        <div class="form-group pt-4">
-            <v-btn @click=logout>Logout</v-btn>
+        <div class="infos">
+        <div class="infos-line"><span>First name:</span> <span>{{user.firstName}}</span></div>
+        <div class="infos-line"><span>Last name:</span> <span>{{user.lastName}}</span></div>
+        <div class="infos-line"><span>E-mail:</span> <span>{{user.email}}</span></div>
         </div>
+        <v-btn color="orange" raised  class="mt-8" @click=logout>Logout</v-btn>
     </div>
 </template>
 
@@ -25,9 +25,17 @@ export default {
     }
 };
 </script>
-<style scoped>
-.loginpage {
-  width:400px;
+<style>
+.userpage {
+  width:300px;
   margin:0 auto;
+}
+.infos {
+    display: flex;
+    flex-direction: column;
+}
+.infos-line {
+    display: flex;
+    justify-content: space-between;
 }
 </style>

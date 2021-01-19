@@ -19,7 +19,7 @@
                         label="Password"
                         hide-details="auto"></v-text-field>
                 </div>
-                <div class="form-group pt-4">
+                <div class="form-group pt-8">
                     <v-btn @click=login>Login</v-btn>
                     <v-btn to="/register" class="ml-4">Register</v-btn>
                     <v-btn @click=googleLogin class="ml-4">
@@ -58,12 +58,12 @@ export default {
         googleLogin() {
             this.$store.dispatch("googleLogin");
         }
-    }
+    },
 };
 </script>
-<style scoped>
+<style>
 .loginpage {
-  width:400px;
+  width:360px;
   margin:0 auto;
 }
 </style>

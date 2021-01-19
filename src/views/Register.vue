@@ -33,7 +33,7 @@
                         label="Password"
                         hide-details="auto"></v-text-field>
                 </div>
-                <div class="form-group pt-4">
+                <div class="form-group pt-8">
                     <v-btn @click=register>Sign Up</v-btn>
                 </div>
             </v-form>
@@ -72,8 +72,5 @@ export default {
 };
 </script>
 <style scoped>
-.loginpage {
-  width:400px;
-  margin:0 auto;
-}
+
 </style>
