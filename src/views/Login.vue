@@ -20,11 +20,11 @@
                         hide-details="auto"></v-text-field>
                 </div>
                 <div class="form-group buttons pt-8">
-                    <v-btn @click=login>Login</v-btn>
-                    <v-btn to="/register" class="ml-4">Register</v-btn>
+                    <v-btn color="success"  rounded @click=login>Login</v-btn>
                 </div>
                 <div class="form-group buttons pt-4">
-                    <v-btn @click=googleLogin>
+                    <v-btn to="/register">Register</v-btn>
+                    <v-btn @click=googleLogin class="ml-4">
                         <v-icon class="pr-2" size="24px">
                             mdi-google
                         </v-icon>
@@ -78,12 +78,12 @@ export default {
   margin:0 auto;
 }
 .form-group.buttons {
-    width: 80%;
+    width: 100%;
     margin: auto;
     display: flex;
     justify-content: space-around;
 }
 .v-btn {
-    width: 40%;
+    width: 30%;
 }
 </style>
