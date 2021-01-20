@@ -220,6 +220,9 @@ const store = new Vuex.Store({
 
 websocket.onopen = function() {
   console.log("Trying to connect to Server");
+  const preventTimeout = setInterval(function(){
+    websocket.send("Hey bro, I'm still here!")
+  }, 5000);
 }
 websocket.onclose = function () {
   console.log('Connection Closed!');
