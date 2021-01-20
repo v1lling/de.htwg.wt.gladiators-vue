@@ -56,6 +56,9 @@
     </div>
 </template>
 <style scoped>
+.about {
+    overflow: hidden;
+}
 table {
     margin: auto;
     border-spacing: 50px 0;
