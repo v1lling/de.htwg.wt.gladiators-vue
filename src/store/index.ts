@@ -169,6 +169,9 @@ const store = new Vuex.Store({
     googleLogin({commit}) {
       window.location.replace("/authenticate/google");
     },
+    facebookLogin({commit}) {
+      window.location.replace("/authenticate/facebook");
+    },
     offline({commit}) {
       console.log("store is set offline");
     }
@@ -221,7 +224,7 @@ const store = new Vuex.Store({
 websocket.onopen = function() {
   console.log("Trying to connect to Server");
   const preventTimeout = setInterval(function(){
-    websocket.send("Hey bro, I'm still here!")
+    websocket.send(JSON.stringify("Hey bro, I'm still here!"));
   }, 5000);
 }
 websocket.onclose = function () {
@@ -239,13 +242,15 @@ websocket.onmessage = function (e) {
   store.commit('SET_EVENT', gameEvent);
   store.commit('SET_HIGHLIGHTEDTILES', {});
   store.commit('SET_SELECTEDGLADIATOR', {});
-  switch(gameEvent.eventType) {
-    case "Connected":
-      store.commit('SET_PLAYERID', gameEvent.player);
-      console.log("Connected to the game");
-      break;
-    case "ErrorMessage":
-      store.dispatch("showAlert", {type: "error", message: gameEvent.message});
+  if (gameEvent) {
+    switch(gameEvent.eventType) {
+      case "Connected":
+        store.commit('SET_PLAYERID', gameEvent.player);
+        console.log("Connected to the game");
+        break;
+      case "ErrorMessage":
+        store.dispatch("showAlert", {type: "error", message: gameEvent.message});
+    }
   }
 }
 
