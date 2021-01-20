@@ -22,7 +22,7 @@
                 <div class="form-group buttons pt-8">
                     <v-btn color="success"  rounded @click=login>Login</v-btn>
                 </div>
-                <div class="form-group buttons pt-4">
+                <div v-if="!isMobile()" class="form-group buttons pt-4">
                     <v-btn to="/register">Register</v-btn>
                     <v-btn @click=googleLogin class="ml-4">
                         <v-icon class="pr-2" size="24px">
@@ -37,14 +37,33 @@
                         Sign In
                     </v-btn>
                 </div>
+                <div v-if="isMobile()" class="form-group buttons pt-4">
+                    <v-btn @click=googleLogin class="ml-4">
+                        <v-icon class="pr-2" size="24px">
+                            mdi-google
+                        </v-icon>
+                        Sign In
+                    </v-btn>
+                    <v-btn @click=facebookLogin class="ml-4">
+                        <v-icon class="pr-2" size="24px">
+                            mdi-facebook
+                        </v-icon>
+                        Sign In
+                    </v-btn>
+                </div>
+                <div v-if="isMobile()" class="form-group buttons pt-4">
+                    <v-btn to="/register">Register</v-btn>
+                </div>
             </v-form>
         </div>
     </div>
 </template>
 
 <script>
+import { mixinDetectingMobile } from '@/mixins/mixinDetectingMobile';
 
 export default {
+    mixins: [mixinDetectingMobile],
     data () {
         return {
             email: '',
@@ -76,6 +95,7 @@ export default {
 .loginpage {
   width:360px;
   margin:0 auto;
+  max-width: 80%;
 }
 .form-group.buttons {
     width: 100%;
@@ -84,6 +104,5 @@ export default {
     justify-content: space-around;
 }
 .v-btn {
-    width: 30%;
 }
 </style>

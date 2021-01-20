@@ -28,6 +28,7 @@ export default {
 <style>
 .userpage {
   width:300px;
+  max-width: 80%;
   margin:0 auto;
 }
 .infos {
